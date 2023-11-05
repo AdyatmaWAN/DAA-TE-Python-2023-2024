@@ -28,13 +28,15 @@ def partition(arr, left, right):
     return i + 1
 
 def clustered_binary_insertion_sort(arr):
+    pop = 0
     for i in range(1, len(arr)):
         cop = i
         key = arr[cop]
-        if key >= arr[0]:
-            place = binary_loc_finder(arr, 1, cop - 1, key)
+        if key >= arr[pop]:
+            place = binary_loc_finder(arr, pop+1, cop - 1, key)
         else:
-            place = binary_loc_finder(arr, 0, cop - 1, key)
+            place = binary_loc_finder(arr, 0, pop - 1, key)
+        pop = place
         arr = place_inserter(arr, place, cop)
     return arr
 
@@ -61,8 +63,6 @@ def place_inserter(arr, start, end):
         arr[i] = arr[i - 1]
     arr[start] = temp
     return arr
-
-import random
 
 def generate_random_numbers(n):
     return [random.randint(0, 8191) for _ in range(n)]
@@ -104,7 +104,8 @@ def generate():
             save_numbers_to_file(sorted_numbers, f'data/sorted_numbers_{l}_{j}.txt')
             save_numbers_to_file(reverse_sorted_numbers, f'data/reverse_sorted_numbers_{l}_{j}.txt')
 
-# generate()
+# generate() ## Uncomment this line to generate random, sorted, and reverse sorted numbers
+
 n = [200, 2000, 20000]
 m = ["random_numbers", "sorted_numbers", "reverse_sorted_numbers"]
 
