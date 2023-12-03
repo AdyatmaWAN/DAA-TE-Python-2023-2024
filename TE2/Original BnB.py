@@ -9,7 +9,7 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
         if testErr < bestErr[0]:
             bestErr[0] = testErr
             bestAssigment[:] = testAssigment[:]  # Use list slicing for a copy
-            print("be", bestErr)
+            # print("be", bestErr)
 
     else:
         testErr = abs(2 * testValue - totalValue)
