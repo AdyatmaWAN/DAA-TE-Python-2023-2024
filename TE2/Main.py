@@ -115,9 +115,6 @@ def findPartition(arr, n):
             if i >= arr[j - 1]:
                 part[i][j] = (part[i][j] or
                               part[i - arr[j - 1]][j - 1])
-    print(sum//2, n)
-    print(part[sum//2][n])
-    print(part[sum//2])
     return part[sum // 2][n]
     # This code is contributed
     # by mohit kumar 29
