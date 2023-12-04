@@ -35,12 +35,6 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
             # There's a chance we can make an improvement.
             # We will now assign the next item.
 
-            # Try adding values[start_index] to set 2.
-            testAssigment[startIndex] = False
-            branchAndBound(values, startIndex + 1, totalValue, unassignedValue,
-                           testAssigment, testValue, bestAssigment,
-                           bestErr)
-
             # Try adding values[start_index] to set 1.
             unassignedValue -= values[startIndex]
             testAssigment[startIndex] = True
@@ -48,7 +42,13 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
                            testAssigment, testValue + values[startIndex],
                            bestAssigment, bestErr)
             #false unassigned value should be added back
-            # unassignedValue += values[startIndex]
+            unassignedValue += values[startIndex]
+
+            # Try adding values[start_index] to set 2.
+            testAssigment[startIndex] = False
+            branchAndBound(values, startIndex + 1, totalValue, unassignedValue,
+                           testAssigment, testValue, bestAssigment,
+                           bestErr)
 
 # Dynamic Programming based python
 # program to partition problem
