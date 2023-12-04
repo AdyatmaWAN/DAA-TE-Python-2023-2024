@@ -23,7 +23,7 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
             bestErr[0] = testErr
             bestAssigment = copy.deepcopy(testAssigment)
             # print(bestAssigment)
-            print(bestErr)
+            # print(bestErr)
     else:
         # See if there's any way we can assign
         # the remaining items to improve the solution.
@@ -34,6 +34,7 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
             # print("here")
             # There's a chance we can make an improvement.
             # We will now assign the next item.
+
             # Try adding values[start_index] to set 2.
             testAssigment[startIndex] = False
             branchAndBound(values, startIndex + 1, totalValue, unassignedValue,
@@ -46,6 +47,8 @@ def branchAndBound(values, startIndex, totalValue, unassignedValue, testAssigmen
             branchAndBound(values, startIndex + 1, totalValue, unassignedValue,
                            testAssigment, testValue + values[startIndex],
                            bestAssigment, bestErr)
+            #false unassigned value should be added back
+            # unassignedValue += values[startIndex]
 
 # Dynamic Programming based python
 # program to partition problem
